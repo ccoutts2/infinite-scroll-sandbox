@@ -1,33 +1,178 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+:root {
+  --primary: #0b0b0b;
+  --secondary: #e8e8e8;
+}
+
+html {
+  font-size: calc(100vw / 1920 * 10);
+}
+
+::-webkit-scrollbar {
+  display: none;
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  background-color: var(--primary);
+  color: var(--secondary);
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+h1 {
+  font-size: 8rem;
+  text-transform: uppercase;
+}
+
+h2 {
+  font-size: 3.2rem;
+  text-transform: uppercase;
+}
+
+a,
+span,
+li,
+ul {
+  font-size: 1.6rem;
+  text-transform: uppercase;
+  text-decoration: none;
+  list-style: none;
+}
+
+html.lenis {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto;
+}
+
+.lenis.lenis-smooth [data-lenis-revent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}
+
+/* Nav */
+
+.nav {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  padding: 3.2rem;
+  z-index: 50;
+  mix-blend-mode: difference;
+}
+
+.navWrapper {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.navExtra {
+  opacity: 0.5;
+}
+
+.section {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.sectionWrapper {
+  display: flex;
+  gap: 3.2rem;
+}
+
+.sectionCol:nth-child(1) {
+  position: relative;
+  width: calc(100vw / 2 - 3.2rem);
+}
+
+.sectionColContainer {
+  position: relative;
+  height: inherit;
+  display: flex;
+  flex-direction: column;
+  gap: 3.2rem;
+}
+
+.sectionColImage {
+  width: inherit;
+  height: 100vh;
+  object-fit: cover;
+}
+
+.sectionCol:nth-child(2) {
+  position: fixed;
+  right: 0;
+  top: 0;
+  width: 50%;
+  height: 100vh;
+  padding: 1.6rem;
+  padding-left: 16rem;
+}
+
+.sectionCol:nth-child(2) .sectionColContainer {
+  gap: 16rem;
+}
+
+.sectionColDescription {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6.4rem;
+  width: 48rem;
+}
+
+.sectionColInfo {
+  width: 20rem;
+}
+
+.sectionColInfo::before,
+.sectionColRole::before,
+.sectionColAwards::before {
+  font-size: 1.6rem;
+  display: block;
+  margin-bottom: 3.2rem;
+}
+
+.sectionColInfo::before {
+  content: "Info";
+}
+
+.sectionColRole::before {
+  content: "Role";
+}
+
+.sectionColAwards::before {
+  content: "Awards";
+}
+
+.sectionColLink {
+  position: absolute;
+  left: 0;
+  bottom: 3.2rem;
+  cursor: pointer;
+}
+
+.sectionColScroll {
+  position: absolute;
+  right: 0;
+  bottom: 3.2rem;
+}
+
+.--clone {
+  height: 100vh;
+  margin-top: 3.2rem;
 }
